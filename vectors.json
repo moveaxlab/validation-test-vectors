@@ -1,4 +1,407 @@
 {
+  "parser": {
+    "failure": [
+      {
+        "case": "The parser accepted an badly formatted rule",
+        "spec": {
+          "rules": [
+            "between<123>"
+          ],
+          "type": "string"
+        },
+        "strict": false
+      },
+      {
+        "case": "The key \"rules\" is required",
+        "spec": {
+          "type": "string"
+        },
+        "strict": false
+      },
+      {
+        "case": "The key \"type\" is required",
+        "spec": {
+          "rules": "max:10|nullable"
+        },
+        "strict": false
+      },
+      {
+        "case": "Only \"array\" structures must define \"elements\"",
+        "spec": {
+          "elements": {
+            "rules": [
+              "maxlen:100"
+            ],
+            "type": "string"
+          },
+          "rules": [
+            "maxlen:100",
+            "nullable"
+          ],
+          "type": "string"
+        },
+        "strict": false
+      },
+      {
+        "case": "Only \"object\" structures must define \"schema\"",
+        "spec": {
+          "rules": [
+            "maxlen:100",
+            "nullable"
+          ],
+          "schema": {
+            "a": {
+              "rules": [
+                "maxlen:100"
+              ],
+              "type": "string"
+            }
+          },
+          "type": "string"
+        },
+        "strict": false
+      }
+    ],
+    "success": {
+      "high-level": {
+        "rules": [
+          "nullable"
+        ],
+        "schema": {
+          "a": {
+            "rules": "minlen:8|maxlen:30|regex:[ab]+[cd]{2,4}|required",
+            "type": "string"
+          },
+          "b": {
+            "rules": [
+              "required"
+            ],
+            "type": "uuid"
+          },
+          "c": {
+            "rules": "maxlen:40|required",
+            "type": "base64"
+          },
+          "d": {
+            "rules": "maxlen:41|required",
+            "type": "base58"
+          },
+          "e": {
+            "rules": [
+              "required"
+            ],
+            "type": "boolean"
+          },
+          "f": {
+            "rules": "maxlen:30|required|nullable",
+            "type": "email"
+          },
+          "g": {
+            "rules": "max:100|required",
+            "type": "integer"
+          },
+          "h": {
+            "rules": "len:5|required",
+            "type": "sequence"
+          },
+          "i": {
+            "rules": "minlen:20|regex:^https|required",
+            "type": "url"
+          },
+          "l": {
+            "rules": "decimal|required",
+            "type": "string"
+          },
+          "m": {
+            "rules": "required|min:-2",
+            "type": "float"
+          },
+          "n": {
+            "elements": {
+              "rules": "maxlen:20|nullable",
+              "type": "string"
+            },
+            "rules": [
+              "maxlen:100",
+              "nullable"
+            ],
+            "type": "array"
+          },
+          "o": {
+            "schema": {
+              "endpoint": {
+                "rules": [
+                  "maxlen:20",
+                  "nullable",
+                  "regex[protocol]:^(?:http|ftp)s?://"
+                ],
+                "type": "url"
+              }
+            },
+            "rules": [],
+            "type": "object"
+          },
+          "p": {
+            "rules": [],
+            "type": "object",
+            "schema": {
+              "q": {
+                "elements": {
+                  "rules": [],
+                  "type": "object"
+                },
+                "rules": [
+                  "nullable"
+                ],
+                "type": "array"
+              }
+            }
+          }
+        },
+        "type": "object"
+      },
+      "low-level": {
+        "nullable": true,
+        "rules": [
+          {
+            "name": "strict"
+          },
+          {
+            "name": "required",
+            "params": [
+              "a",
+              "b",
+              "c",
+              "d",
+              "e",
+              "f",
+              "g",
+              "h",
+              "i",
+              "l",
+              "m"
+            ]
+          }
+        ],
+        "schema": {
+          "a": {
+            "nullable": false,
+            "rules": [
+              {
+                "name": "minlen",
+                "params": [
+                  "8"
+                ]
+              },
+              {
+                "name": "maxlen",
+                "params": [
+                  "30"
+                ]
+              },
+              {
+                "name": "regex",
+                "params": [
+                  "[ab]+[cd]{2,4}"
+                ]
+              }
+            ],
+            "type": "string"
+          },
+          "b": {
+            "nullable": false,
+            "rules": [],
+            "type": "uuid"
+          },
+          "c": {
+            "nullable": false,
+            "rules": [
+              {
+                "name": "maxlen",
+                "params": [
+                  "40"
+                ]
+              }
+            ],
+            "type": "base64"
+          },
+          "d": {
+            "nullable": false,
+            "rules": [
+              {
+                "name": "maxlen",
+                "params": [
+                  "41"
+                ]
+              }
+            ],
+            "type": "base58"
+          },
+          "e": {
+            "nullable": false,
+            "rules": [],
+            "type": "boolean"
+          },
+          "f": {
+            "nullable": true,
+            "rules": [
+              {
+                "name": "maxlen",
+                "params": [
+                  "30"
+                ]
+              }
+            ],
+            "type": "email"
+          },
+          "g": {
+            "nullable": false,
+            "rules": [
+              {
+                "name": "max",
+                "params": [
+                  "100"
+                ]
+              }
+            ],
+            "type": "integer"
+          },
+          "h": {
+            "nullable": false,
+            "rules": [
+              {
+                "name": "len",
+                "params": [
+                  "5"
+                ]
+              }
+            ],
+            "type": "sequence"
+          },
+          "i": {
+            "nullable": false,
+            "rules": [
+              {
+                "name": "minlen",
+                "params": [
+                  "20"
+                ]
+              },
+              {
+                "name": "regex",
+                "params": [
+                  "^https"
+                ]
+              }
+            ],
+            "type": "url"
+          },
+          "l": {
+            "nullable": false,
+            "rules": [
+              {
+                "name": "decimal"
+              }
+            ],
+            "type": "string"
+          },
+          "m": {
+            "nullable": false,
+            "rules": [
+              {
+                "name": "min",
+                "params": [
+                  "-2"
+                ]
+              }
+            ],
+            "type": "float"
+          },
+          "n": {
+            "elements": {
+              "nullable": true,
+              "rules": [
+                {
+                  "name": "maxlen",
+                  "params": [
+                    "20"
+                  ]
+                }
+              ],
+              "type": "string"
+            },
+            "nullable": true,
+            "rules": [
+              {
+                "name": "maxlen",
+                "params": [
+                  "100"
+                ]
+              }
+            ],
+            "type": "array"
+          },
+          "o": {
+            "nullable": false,
+            "rules": [
+              {
+                "name": "strict"
+              }
+            ],
+            "schema": {
+              "endpoint": {
+                "nullable": true,
+                "rules": [
+                  {
+                    "name": "maxlen",
+                    "params": [
+                      "20"
+                    ]
+                  },
+                  {
+                    "alias": "protocol",
+                    "name": "regex",
+                    "params": [
+                      "^(?:http|ftp)s?://"
+                    ]
+                  }
+                ],
+                "type": "url"
+              }
+            },
+            "type": "object"
+          },
+          "p": {
+            "nullable": false,
+            "rules": [
+              {
+                "name": "strict"
+              }
+            ],
+            "type": "object",
+            "schema": {
+              "q": {
+                "nullable": true,
+                "elements": {
+                  "nullable": false,
+                  "rules": [
+                    {
+                      "name": "strict"
+                    }
+                  ],
+                  "type": "object"
+                },
+                "rules": [],
+                "type": "array"
+              }
+            }
+          }
+        },
+        "type": "object"
+      },
+      "strict": true
+    }
+  },
   "specs": [
     {
       "failure": [
