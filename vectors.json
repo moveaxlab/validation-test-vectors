@@ -3,6 +3,66 @@
     {
       "failure": [
         {
+          "data": "0.001",
+          "failing": {
+            "errors": ["decimal"]
+          }
+        },
+        {
+          "data": "12345678",
+          "failing": {
+            "errors": ["decimal"]
+          }
+        },
+        {
+          "data": "12345678.99",
+          "failing": {
+            "errors": ["decimal"]
+          }
+        },
+        {
+          "data": "12345678.9",
+          "failing": {
+            "errors": ["decimal"]
+          }
+        },
+        {
+          "data": "0,00",
+          "failing": {
+            "errors": ["decimal"]
+          }
+        },
+        {
+          "data": "-123.56",
+          "failing": {
+            "errors": ["decimal"]
+          }
+        },
+        {
+          "data": "a.b",
+          "failing": {
+            "errors": ["decimal"]
+          }
+        }
+      ],
+      "success": [
+        "1234567.89",
+        "0.00",
+        "1234567",
+        "1.11",
+        "0.01",
+        "0.0",
+        "1.1",
+        "1234567.8"
+      ],
+      "spec": {
+        "type": "string",
+        "rules": "decimal"
+      }
+    },
+    {
+      "failure": [
+        {
           "data": {
             "a": "xxxxxxxxaecd",
             "b": "e4fd4922-9b47-4d97-b662-c014c8020ba8",
@@ -112,7 +172,7 @@
               1
             ],
             "i": "https://www.example.com",
-            "l": "999999999",
+            "l": "9999999.99",
             "m": 789
           },
           "failing": {
@@ -143,7 +203,7 @@
               1
             ],
             "i": "https://www.example.com",
-            "l": "123.123",
+            "l": "123.12",
             "m": 0
           },
           "failing": {
@@ -267,7 +327,7 @@
               6
             ],
             "i": "https://www.example.com",
-            "l": "0.0001",
+            "l": "0.01",
             "m": -1.98
           },
           "failing": {
