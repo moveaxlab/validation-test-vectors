@@ -1074,9 +1074,7 @@
         {
           "data": {},
           "failing": {
-            "errors": [
-              "nullable"
-            ],
+            "errors": [],
             "schema_errors": {
               "a": {
                 "errors": [
