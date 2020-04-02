@@ -2262,6 +2262,44 @@
           "field": "abc"
         }
       ]
+    },
+    {
+      "spec": {
+        "type": "phone",
+        "rules": ["phone_type:mobile"]
+      },
+      "failure": [
+        {
+          "data": "+39069988777",
+          "failing": {
+            "errors": [
+              "phone_type"
+            ]
+          }
+        }
+      ],
+      "success": [
+        "+39 340 11 12 330"
+      ]
+    },
+    {
+      "spec": {
+        "type": "phone",
+        "rules": ["phone_type:landline"]
+      },
+      "failure": [
+        {
+          "data": "+39 340 11 12 330",
+          "failing": {
+            "errors": [
+              "phone_type"
+            ]
+          }
+        }
+      ],
+      "success": [
+        "+39069988777"
+      ]
     }
   ],
   "strict": [
